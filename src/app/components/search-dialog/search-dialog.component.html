@@ -1,0 +1,13 @@
+<mat-dialog-content class="search-dialog-content">
+  <mat-form-field appearance="outline">
+      <input matInput type="text" placeholder="Search..." [(ngModel)]="searchQuery">
+  </mat-form-field>
+  <mat-radio-group [(ngModel)]="searchType">
+      <mat-radio-button value="posts">Posts</mat-radio-button>
+      <mat-radio-button value="users">Users</mat-radio-button>
+  </mat-radio-group>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="search()" [disabled]="!searchQuery.trim()">Search</button>
+</mat-dialog-actions>

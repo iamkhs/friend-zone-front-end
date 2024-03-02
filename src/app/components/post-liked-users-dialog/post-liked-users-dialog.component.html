@@ -1,0 +1,17 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <!-- Card for showing contents -->
+        <div *ngFor="let user of likedUsers">
+          <mat-card class="user-card">
+            <mat-card-header>
+              <div mat-card-avatar class="example-header-image">
+                <img class="avatar" [src]="user.profilePic ? user.profilePic: '/assets/default-user.png'" alt="">
+              </div>
+              <mat-card-title>
+                <a class="router-link" (click)="navigateToUserProfile(user.username); closeDialog()">{{ user.username }}</a>
+            </mat-card-title>                                   
+            </mat-card-header>
+          </mat-card>
+        </div>
+  </div>
+</div>

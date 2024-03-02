@@ -1,0 +1,63 @@
+<div class="bootstrap-wrapper">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-7">
+        <div class="main">
+
+          <div class="post-form"> <!-- Center the form using CSS -->
+            <mat-form-field class="post-textarea" appearance="outline">
+              <mat-label>What's on your mind?</mat-label>
+              <input [readonly]="true" (click)="openDialog()" matInput>
+            </mat-form-field>
+          </div>
+
+          <div class="posts-container" *ngIf="posts">
+            <mat-card class="post-card" *ngFor="let post of posts">
+              <mat-card-header>
+                
+                <div mat-card-avatar class="example-header-image">
+                  <img class="avatar" [src]="post.userProfileUrl || post?.profilePic ? post.userProfileUrl || post?.profilePic: '/assets/default-user.png'" alt="">
+                </div>
+
+                <mat-card-title>
+                  <a class="router-link" [routerLink]="['/', post.username]">{{ post.username }}</a>
+                  <img *ngIf="post.username === 'iamkhs'" src="/assets/blue-tick.png" alt="Blue Tick" class="blue-tick-icon">
+                </mat-card-title>
+
+                <mat-card-subtitle *ngIf="post.postedAt">{{ post.postedAt | date:'MMM d, y, h:mm a' }}</mat-card-subtitle>
+              
+              </mat-card-header>
+              
+              <mat-card-content *ngIf="post.postedAt" (click)="postClicked(post.postId)">
+                <p style="font-size: 19px; padding: 10px;">{{ post.postDetails }}</p>
+                <img *ngIf="post.postImageUrl" class="post-img" [src]="post.postImageUrl" alt="">
+              </mat-card-content>
+              
+              <div *ngIf="post.postedAt" class="container">
+                <button (click)="addLike(post)" mat-icon-button [color]=" !currentDisLike(post) && (currentLike(post) || isPostLiked(post))  ? 'warn' : ''" aria-label="button with a heart icon">
+                  <ng-container *ngIf="!currentDisLike(post) && (currentLike(post) || isPostLiked(post))  ; else notLiked">
+                    <mat-icon>favorite</mat-icon>
+                  </ng-container>
+                  <ng-template #notLiked>
+                    <img src="/assets/heart.png" alt="">
+                  </ng-template>
+                </button>
+                
+                <button (click)="postClicked(post.postId)" mat-icon-button class="comment-icon" aria-label="Comment">
+                  <img src="/assets/comment-icon.png" alt="">
+                </button>
+                <a (click)="postClicked(post.postId)" class="router-link">{{ post.comments?.length }} Comments</a>
+              </div>
+
+              <div *ngIf="post.postDetails" style="margin-left: 10px; margin-bottom: 10px;" class="container">
+                <button type="button" class="like-button" *ngIf="post.totalLikes != 0" (click)="handleLikesClick(post.postId)">
+                    <span>{{ post.totalLikes }} likes</span>
+                </button>
+              </div>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

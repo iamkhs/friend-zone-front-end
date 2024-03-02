@@ -1,0 +1,135 @@
+.col-md-7 {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.user-avatar {
+  display: flex;
+  align-items: center;
+}
+
+.user-avatar img.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.post-card {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.post-details {
+  padding: 10px;
+  font-size: 18px;
+}
+
+.post-image {
+  max-width: 100%;
+  height: auto;
+  margin-top: 10px;
+  padding: 20px;
+}
+
+.comments-container {
+  margin-top: 20px;
+}
+
+.comments-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.comment {
+  margin-bottom: 15px;
+  border: 1px solid #eee;
+  padding: 10px;
+  border-radius: 8px;
+}
+.comments{
+  padding: 10px;
+}
+
+.comment-header {
+  display: flex;
+  align-items: center;
+}
+
+.comment-header img.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.comment-header .comment-details {
+  display: flex;
+  align-items: center;
+}
+
+.comment-header .comment-date {
+  margin-left: auto;
+}
+
+.comment p {
+  margin: 5px 0;
+}
+
+.comment-input-container {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.comment-input {
+  flex: 1;
+  margin-right: 10px;
+}
+
+
+.commenter{
+  font-size: 18px;
+}
+
+.comment-body{
+  padding: 10px;
+}
+
+.comment-date{
+  font-size: 12px;
+}
+
+.blue-tick-icon {
+  height: 12px;
+  width: 12px;
+  margin-left: 3px;
+}
+
+.comments-title{
+  padding: 10px;
+}
+
+/* Add this to your global styles (styles.css or styles.scss) */
+
+a {
+  text-decoration: none; /* Remove underline */
+  color: #007bff; /* Change link color to blue (you can adjust the color as needed) */
+}
+
+a:hover {
+  text-decoration: underline; /* Add underline on hover */
+}
+
+/* Add this to your global styles (styles.css or styles.scss) or component-specific CSS file */
+
+.router-link {
+  font-family: 'Roboto', sans-serif;
+  text-decoration: none; /* Remove underline */
+  color: #333; /* Set the color */
+}
+
+.router-link:hover {
+  color: #555; /* Change color on hover if needed */
+  text-decoration: underline; /* Add underline on hover */
+}

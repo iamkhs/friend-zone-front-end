@@ -1,0 +1,43 @@
+
+.bootstrap-wrapper{
+  width: 400px;
+}
+
+.avatar{
+    height: 42px;
+    width: 42px;
+    border-radius: 20px;
+  }
+  .blue-tick-icon {
+    height: 12px;
+    width: 12px;
+    margin-left: 3px;
+  }
+  
+  .user-card{
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+
+a {
+  text-decoration: none; /* Remove underline */
+  color: #007bff; /* Change link color to blue (you can adjust the color as needed) */
+}
+
+a:hover {
+  text-decoration: underline; /* Add underline on hover */
+}
+
+/* Add this to your global styles (styles.css or styles.scss) or component-specific CSS file */
+
+.router-link {
+  font-family: 'Roboto', sans-serif;
+  text-decoration: none; /* Remove underline */
+  color: #333; /* Set the color */
+}
+
+.router-link:hover {
+  color: #555; /* Change color on hover if needed */
+  text-decoration: underline; /* Add underline on hover */
+}

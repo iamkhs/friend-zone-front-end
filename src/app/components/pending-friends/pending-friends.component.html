@@ -1,0 +1,42 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <div class="main">
+            <!-- Container for the card section -->
+            <div class="container">
+              <!-- Card for action buttons -->
+              <mat-card class="pending-frnds-header">
+                <mat-card-content class="button-container"> <!-- Add a class to the content -->
+                  <button routerLink="/pending-friends" class="pending-frnds-btn" mat-raised-button color="primary">Pending Friends</button>
+                  <button routerLink="/find-friends" mat-raised-button color="accent">Find Friends</button>
+                </mat-card-content>
+              </mat-card>
+            </div>
+            <!-- Container for the content -->
+            <div class="container">
+              <!-- Card for showing contents -->
+              <div *ngFor="let friend of pendingFriends">
+                <mat-card class="user-card">
+                  <mat-card-header>
+                    <div mat-card-avatar class="example-header-image">
+                      <img class="avatar" [src]="friend.profilePic ? friend.profilePic: '/assets/default-user.png'" alt="">
+                    </div>
+                    <mat-card-title>
+                      <a class="router-link" [routerLink]="['/', friend.username]">{{ friend.username }}</a>
+                    </mat-card-title>                       
+                    <span class="spacer"></span> <!-- Add a spacer to push buttons to the right -->
+                    <mat-card-actions class="action-buttons">
+                      <button (click)="acceptFriend(friend.id)" mat-button color="primary">Accept</button>
+                      <button (click)="declineFriend(friend.id)" mat-button color="warn">Decline</button>
+                    </mat-card-actions>
+                  </mat-card-header>
+                </mat-card>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

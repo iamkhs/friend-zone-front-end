@@ -1,0 +1,77 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-7">
+          <div class="main">
+            <mat-card class="post-card">
+              <mat-card-header>
+                <div mat-card-avatar class="user-avatar">
+                  <img class="avatar" [src]="post?.userProfileUrl || 'assets/default-user.png'" alt="User Avatar">
+                </div>
+                <mat-card-title>
+                  <a class="router-link" [routerLink]="['/', post?.username]">{{ post?.username }}</a>
+                    <img *ngIf="post?.username === 'iamkhs'" src="/assets/blue-tick.png" alt="Blue Tick" class="blue-tick-icon">
+                </mat-card-title>
+                <mat-card-subtitle>{{ post?.postedAt | date: 'MMM d, y, h:mm a' }}</mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+                <!-- Post Details -->
+                <div class="post-details">
+                  <p>{{ post?.postDetails }}</p>
+                </div>
+                <!-- Post Image -->
+                <img class="post-image" [src]="post?.postImageUrl" alt="Post Image" *ngIf="post?.postImageUrl">
+              </mat-card-content>
+              <!-- Divider -->
+              <mat-divider></mat-divider>
+              <!-- Comments -->
+              <div class="comments-container" *ngIf="post?.comments && post.comments.length > 0">
+                <h3 class="comments-title">Comments</h3>
+                <div class="comments" *ngFor="let comment of post.comments">
+                  <div class="comment">
+                    <div class="comment-header">
+                      <div class="user-avatar">
+                        <img class="avatar" [src]="comment.commenter?.profilePic || 'assets/default-user.png'" alt="Commenter Avatar">
+                      </div>
+                      <div class="comment-details">
+                        <a class="router-link commenter" [routerLink]="['/', comment.commenter.username]">{{ comment.commenter?.username }}</a>
+                        <!-- <span class="commenter"></span> -->
+                        <img *ngIf="comment.commenter.username === 'iamkhs'" src="/assets/blue-tick.png" alt="Blue Tick" class="blue-tick-icon">
+                        <span style="margin-left: 10px;" class="comment-date">{{ comment.commentAt | date: 'MMM d, y, h:mm a' }}</span>
+                      </div>
+
+
+                       <!-- Angular Material menu -->
+                    <div class="menu-container" *ngIf="comment.commenter.username == username">
+                      <button mat-icon-button [matMenuTriggerFor]="postMenu">
+                        <mat-icon>more_vert</mat-icon>
+                      </button>
+                      <mat-menu
+                        #postMenu="matMenu"
+                        xPosition="after"
+                        yPosition="below"
+                      >
+                        <button (click)="editComment(comment.id)" mat-menu-item>Edit</button>
+                        <button (click)="deleteComment(comment.id)" mat-menu-item> Delete </button>
+                      </mat-menu>
+                    </div>
+
+                    </div>
+                    <p class="comment-body">{{ comment.body }}</p>
+                  </div>
+                </div>
+              </div>
+            </mat-card>
+            <!-- Comment Input Field -->
+            <div class="comment-input-container">
+              <mat-form-field appearance="fill" class="comment-input">
+                <input matInput placeholder="Add a comment" [(ngModel)]="newComment">
+              </mat-form-field>
+              <button type="submit" mat-raised-button style="color: #1876f2e8 ;" (click)="addComment(post.postId)">Comment</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

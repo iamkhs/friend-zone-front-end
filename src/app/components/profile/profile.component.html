@@ -1,0 +1,217 @@
+<div class="profile-wrapper">
+  <mat-card class="profile-card">
+    <!-- Cover Photo -->
+    <div class="cover-photo">
+      <!-- Your cover photo content goes here -->
+      <img
+        [src]="UserDetails?.coverPic || '/assets/default-cover-pic.jpeg'"
+        alt="Cover Photo"
+      />
+    </div>
+
+    <!-- Profile Picture and Button Container -->
+    <div class="profile-container">
+      <!-- Profile Picture -->
+      <div class="profile-picture">
+        <!-- Profile Picture Image -->
+        <img
+          [src]="UserDetails?.profilePic || profileImageUrl"
+          alt="Profile Picture"
+        />
+      </div>
+
+      <ng-container *ngIf="currentLoggedUser">
+        <!-- Conditionally show the cover picture edit button -->
+        <button mat-fab class="cover-pic-btn" (click)="coverFileInput.click()" matTooltip="change cover">
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <!-- Conditionally show the profile edit button -->
+        <button mat-fab class="profile-btn" (click)="profileFileInput.click()" matTooltip="change profile">
+          <mat-icon>add</mat-icon>
+        </button>
+      </ng-container>
+
+      <!-- Hidden Inputs for File Selection -->
+      <input
+        type="file"
+        #coverFileInput
+        (change)="onCoverPicSelect($event)"
+        accept="image/*"
+        hidden
+      />
+      <input
+        type="file"
+        #profileFileInput
+        (change)="onProfilePicSelect($event)"
+        accept="image/*"
+        hidden
+      />
+    </div>
+
+    <!-- User Info -->
+    <div class="user-info">
+      <!-- User's Name -->
+      <h1 class="user-name">
+        {{ UserDetails?.username }}
+        <img
+          *ngIf="UserDetails?.username === 'iamkhs'"
+          src="/assets/blue-tick.png"
+          alt="Blue Tick"
+          class="blue-tick-icon"
+        />
+      </h1>
+      <p class="user-bio">{{ UserDetails?.email }}</p>
+      <div *ngIf="!currentLoggedUser" class="container">
+        <button
+          style="margin-right: 20px"
+          mat-raised-button
+          class="navigation-button"
+          [color]="friendshipStatus === 'PENDING' || friendshipStatus === 'ACCEPTED' ? 'warn' : 'primary'"
+          (click)="handleFriendAction(UserDetails.id)"
+        >
+          {{ friendshipStatus === 'PENDING' ? 'Pending' : friendshipStatus === 'ACCEPTED' ? 'Unfriend' : 'Add Friend' }}
+        </button>
+      </div>
+      
+    </div>
+  </mat-card>
+
+  <div *ngIf="currentLoggedUser" style="margin-top: 10px">
+    <!-- Navigation Buttons -->
+    <button
+      style="margin-right: 20px"
+      mat-stroked-button
+      class="navigation-button"
+      (click)="gototimeline()"
+    >
+      Timeline
+    </button>
+    <button
+      style="margin-right: 20px"
+      mat-stroked-button
+      class="navigation-button"
+      (click)="showFriends()"
+    >
+      Friends
+    </button>
+    <button mat-stroked-button class="navigation-button">Update Info</button>
+  </div>
+
+  <!-- User Posts Section -->
+  <div class="posts-section">
+    <div class="bootstrap-wrapper">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-7">
+            <div *ngIf="showUserFriendsComponent" class="posts-section">
+              <router-outlet></router-outlet>
+            </div>
+            <div *ngIf="!showUserFriendsComponent"  class="main">
+              <div class="post-form">
+                <!-- Center the form using CSS -->
+                <mat-form-field
+                  *ngIf="currentLoggedUser"
+                  class="post-textarea"
+                  appearance="outline"
+                >
+                  <mat-label>What's on your mind?</mat-label>
+                  <input [readonly]="true" (click)="openDialog()" matInput />
+                </mat-form-field>
+              </div>
+              <h2>Your Posts</h2>
+              <div class="posts-container" *ngIf="posts">
+                <mat-card class="post-card" *ngFor="let post of posts">
+                  <mat-card-header>
+                    <div mat-card-avatar class="example-header-image">
+                      <img
+                        class="avatar"
+                        [src]="
+                          post.userProfileUrl
+                            ? post.userProfileUrl
+                            : '/assets/default-user.png'
+                        "
+                        alt=""
+                      />
+                    </div>
+                    <mat-card-title>
+                      {{ post.username }}
+                      <img
+                        *ngIf="post.username === 'iamkhs'"
+                        src="/assets/blue-tick.png"
+                        alt="Blue Tick"
+                        class="blue-tick-icon"
+                      />
+                    </mat-card-title>
+                    <mat-card-subtitle>{{
+                      post.postedAt | date : "MMM d, y, h:mm a"
+                    }}</mat-card-subtitle>
+
+                    <!-- Angular Material menu -->
+                    <div class="menu-container" *ngIf="currentLoggedUser">
+                      <button mat-icon-button [matMenuTriggerFor]="postMenu">
+                        <mat-icon>more_vert</mat-icon>
+                      </button>
+                      <mat-menu
+                        #postMenu="matMenu"
+                        xPosition="after"
+                        yPosition="below"
+                      >
+                        <button (click)="updatePost(post.postId)" mat-menu-item>Edit</button>
+                        <button (click)="deletePost(post.postId)" mat-menu-item>
+                          Delete
+                        </button>
+                      </mat-menu>
+                    </div>
+                  </mat-card-header>
+
+                  <!-- <img mat-card-image src="path_to_your_image" alt="Post Image"> -->
+                  <mat-card-content>
+                    <p style="font-size: 19px; padding: 10px">
+                      {{ post.postDetails }}
+                    </p>
+                    <img
+                      *ngIf="post.postImageUrl"
+                      class="post-img"
+                      [src]="post.postImageUrl"
+                      alt=""
+                    />
+                  </mat-card-content>
+                  <div class="container">
+
+                    <button (click)="addLike(post.postId)" mat-icon-button [color]=" currentLike(post) || isPostLiked(post)  ? 'warn' : ''" aria-label="button with a heart icon">
+                      <ng-container *ngIf="currentLike(post) || isPostLiked(post) ; else notLiked">
+                        <mat-icon>favorite</mat-icon>
+                      </ng-container>
+                      <ng-template #notLiked>
+                        <img src="/assets/heart.png" alt="">
+                      </ng-template>
+                    </button>
+
+                    <button
+                      (click)="postClicked(post.postId)"
+                      mat-icon-button
+                      class="comment-icon"
+                      aria-label="Comment"
+                    >
+                      <img src="/assets/comment-icon.png" alt="" />
+                    </button>
+                    <a (click)="postClicked(post.postId)" class="router-link"
+                      >{{ post.comments?.length }} Comments</a
+                    >
+                  </div>
+
+                  <div style="margin-left: 10px; margin-bottom: 10px;" class="container">
+                    <button type="button" class="like-button" *ngIf="post.totalLikes != 0" (click)="handleLikesClick(post.postId)">
+                        <span>{{ post.totalLikes }} likes</span>
+                    </button>
+                  </div>
+                </mat-card>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

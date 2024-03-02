@@ -1,0 +1,66 @@
+.container {
+    width: 400px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+  }
+  .form-container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  mat-form-field {
+    width: 100%;
+  }
+  
+  mat-input {
+    font-size: 16px;
+    line-height: 1.5;
+    border-radius: 5px;
+  }
+  .file-input-container {
+    display: flex;
+    align-items: center;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    padding: 8px 10px;
+    cursor: pointer;
+  }
+  
+  .file-input {
+    display: none;
+  }
+  
+  .file-input-label {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #999;
+    cursor: pointer;
+  }
+  
+  mat-icon {
+    margin-right: 5px;
+  }
+  mat-raised-button {
+    width: 100%;
+    font-size: 16px;
+    color: #fff;
+    border-radius: 5px;
+  }
+
+  .title{
+    margin-top: 5px;
+    text-align: center;
+  }
+
+
+  /* Media query for screens smaller than 600px (typical mobile devices) */
+@media screen and (max-width: 600px) {
+  .container {
+    width: 100%; /* Set width to 100% for mobile devices */
+  }
+}

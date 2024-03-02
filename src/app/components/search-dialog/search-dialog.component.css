@@ -1,0 +1,18 @@
+.search-dialog-content {
+    padding: 20px;
+  }
+  
+  .search-results {
+    margin-top: 20px;
+  }
+  
+  .search-result {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .no-results {
+    color: #888;
+    margin-top: 10px;
+  }
+  

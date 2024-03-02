@@ -1,0 +1,29 @@
+<div class="main">
+  <h2 class="title">Your {{userFriends.length}} Friends</h2>
+  <mat-divider></mat-divider>
+  <!-- Container for the content -->
+  <div class="container">
+    <!-- Card for showing contents -->
+    <div *ngFor="let friend of userFriends">
+      <mat-card class="user-card">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image">
+            <img
+              class="avatar"
+              [src]="
+                friend.profilePic
+                  ? friend.profilePic
+                  : '/assets/default-user.png'
+              "
+              alt=""
+            />
+          </div>
+          <mat-card-title>
+            <a class="router-link" [href]="'/' + friend.username">{{ friend.username }}</a>
+          </mat-card-title>
+          <button (click)="unfriend(friend.id)" mat-button color="warn">Unfriend</button>
+        </mat-card-header>
+      </mat-card>
+    </div>
+  </div>
+</div>

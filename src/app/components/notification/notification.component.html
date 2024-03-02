@@ -1,0 +1,21 @@
+<div class="notification-wrapper">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="notification-list">
+          <h2 class="notification-title">Notifications</h2>
+          <div class="notification-item" *ngFor="let notification of notifications" [ngClass]="{'unread': !notification.isRead}">
+            <div class="notification-content" (click)="handalingNotificationMethod(notification)">
+              <div class="dot" *ngIf="!notification.isRead"></div>
+              <div class="notification-details">
+                <p [innerHTML]="notification.content"></p>
+                <span class="notification-time">{{ notification.notificationTime | date:'MMM d, h:mm a' }}</span>
+              </div>
+              <mat-divider></mat-divider>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

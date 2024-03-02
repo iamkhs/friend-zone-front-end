@@ -1,0 +1,38 @@
+<mat-toolbar color="primary" class="toolbar">
+  <div *ngIf="userService.isLoggedIn()" class="left-buttons">
+    <button (click)="openSearchDialog()" class="toolbar-btn" mat-icon-button matTooltip="Search">
+      <mat-icon>search</mat-icon>
+    </button>
+  </div>
+
+  <div *ngIf="userService.isLoggedIn()" class="center-buttons">
+    <button routerLink="/" class="toolbar-btn" mat-icon-button matTooltip="Home">
+      <mat-icon>home</mat-icon>
+    </button>
+
+    <button routerLink="/pending-friends" class="toolbar-btn" mat-icon-button matTooltip="Pending Friends">
+      <mat-icon
+        [matBadge]="getBadgeNumber() !== 0 ? getBadgeNumber() : null"
+        matBadgeColor="warn"
+      >people</mat-icon>
+    </button>
+
+    <button routerLink="/notifications" class="toolbar-btn" mat-icon-button matTooltip="Notifications">
+      <mat-icon
+      [matBadge]="getUnreadNotificationCount() !== 0 ? getUnreadNotificationCount() : null"
+      matBadgeColor="warn"
+      >notifications</mat-icon>
+    </button>
+
+    <!-- <a class="router-link" [routerLink]="['/', post.username]">{{ post.username }}</a> -->
+
+    <button (click)="gotoProfile()" class="toolbar-btn" mat-icon-button matTooltip="Profile">
+      <mat-icon>person</mat-icon>
+    </button>
+  </div>
+
+  <!-- Logout button -->
+  <button *ngIf="userService.isLoggedIn()" (click)="logout()" class="toolbar-btn logout-btn" mat-icon-button matTooltip="Logout">
+    <mat-icon>exit_to_app</mat-icon>
+  </button>
+</mat-toolbar>

@@ -1,0 +1,252 @@
+.profile-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cover-photo {
+    height: 200px; /* Fixed height */
+    overflow: hidden; /* Hide any overflow content */
+}
+
+.cover-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-container {
+    position: relative; /* Make the container relative for absolute positioning */
+    display: inline-block; /* Display the profile and button side by side */
+}
+
+.profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-top: -75px; /* Adjust to position the profile picture */
+    border: 5px solid #fff; /* Add border styles as needed */
+}
+
+.profile-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cover-pic-btn {
+    position: absolute; /* Position the button absolutely */
+    right: 0; /* Align the button to the right */
+    bottom: 0; /* Align the button to the bottom */
+    margin: 8px; /* Adjust the margin as needed */
+    z-index: 1; /* Ensure the button is above the profile picture */
+    height: 32px;
+    width: 32px;
+}
+
+.user-info {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+}
+
+.user-name {
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.user-bio {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #666;
+}
+
+.user-details {
+    margin-top: 20px;
+    /* Add styles for other user details */
+}
+
+.profile-btn {
+    height: 32px;
+    width: 32px;
+    margin-top: -30px;
+}
+
+
+
+.bootstrap-wrapper {
+    background-color: #ffffff;
+  }
+  
+  .post-card {
+    margin-bottom: 20px; /* Add margin between post cards */
+    border-radius: 14px;
+    cursor: pointer;
+  }
+  
+  .post-form {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px; /* Add margin below the post form */
+    justify-content: center;
+  }
+  
+  .post-button {
+    border-radius: 25px;
+    margin-left: 10px; /* Add margin between the textarea and the button */
+  }
+  
+  .post-textarea {
+    margin-top: 30px;
+    width: calc(100% - 100px); /* Adjust the width as needed */
+  }
+  
+  .blue-tick-icon {
+    height: 15px;
+    width: 15px;
+  }
+  
+  .avatar {
+    height: 42px;
+    width: 42px;
+    border-radius: 20px;
+  }
+  
+  /* .mat-card-content {
+    display: flex;
+    align-items: center;
+  } */
+  
+  .comment-icon {
+    margin-left: auto; /* Push the comment icon to the right */
+    margin-right: 5px;
+  }
+  
+  .post-img {
+    width: 100%; /* Set the image width to 100% */
+    height: 300px; /* Set a default height for the image */
+    object-fit: cover; /* Maintain aspect ratio and cover entire container */
+    padding: 10px;
+    border-radius: 20px;
+  }
+  
+  .post-textarea {
+    border-radius: 20px;
+  }
+  
+  .col-md-7 {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  
+  .profile-wrapper {
+    max-width: 60%; /* Adjust the max-width as needed */
+    margin: 0 auto;
+}
+
+
+/* Add this to your global styles (styles.css or styles.scss) */
+
+a {
+  text-decoration: none; /* Remove underline */
+  color: #007bff; /* Change link color to blue (you can adjust the color as needed) */
+}
+
+a:hover {
+  text-decoration: underline; /* Add underline on hover */
+}
+
+/* Add this to your global styles (styles.css or styles.scss) or component-specific CSS file */
+
+.router-link {
+  font-family: 'Roboto', sans-serif;
+  text-decoration: none; /* Remove underline */
+  color: #333; /* Set the color */
+}
+
+.router-link:hover {
+  color: #555; /* Change color on hover if needed */
+  text-decoration: underline; /* Add underline on hover */
+}
+
+.menu-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.like-button {
+  border: none;
+  background: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  color: inherit;
+  text-decoration: underline; /* Optionally, add underline effect */
+}
+
+
+
+/* Add this to your component-specific CSS file or global styles */
+
+/* Mobile-first approach */
+@media only screen and (max-width: 767px) {
+  .profile-wrapper {
+    max-width: 100%; /* Adjust to full width on smaller screens */
+    padding: 20px; /* Add padding for better spacing */
+  }
+
+  .profile-container {
+    display: block; /* Change to block display for better stacking on mobile */
+    text-align: center; /* Center align the profile picture and buttons */
+  }
+
+  .profile-picture {
+    margin: 0 auto 20px; /* Center align profile picture and add bottom margin */
+  }
+
+  .profile-picture img {
+    width: 120px; /* Adjust profile picture size for smaller screens */
+    height: 120px;
+  }
+
+  .cover-pic-btn,
+  .profile-btn {
+    position: static; /* Remove absolute positioning for buttons */
+    margin: 10px auto; /* Center align buttons with margin */
+    display: block; /* Change to block display for full width buttons */
+  }
+
+  .user-name {
+    font-size: 20px; /* Decrease font size for smaller screens */
+  }
+
+  .user-bio {
+    font-size: 14px; /* Decrease font size for smaller screens */
+  }
+
+  .navigation-button {
+    margin-bottom: 10px; /* Add margin between navigation buttons */
+    display: block; /* Change to block display for full width buttons */
+    width: 100%; /* Make navigation buttons full width */
+    text-align: center; /* Center align navigation buttons text */
+  }
+
+  .posts-section {
+    padding: 0; /* Remove padding for posts section */
+  }
+
+  .col-md-7 {
+    padding: 0; /* Remove padding for column */
+    width: 100%; /* Make column full width */
+    max-width: none; /* Remove max-width */
+  }
+
+  .post-textarea {
+    width: 100%; /* Make post textarea full width */
+    max-width: none; /* Remove max-width */
+  }
+}
+

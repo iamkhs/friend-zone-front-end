@@ -1,0 +1,49 @@
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: #1876f2e8;
+  color: white;
+  border-radius: 0 0 10px 15px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.left-buttons {
+  display: flex;
+}
+
+.center-buttons {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+}
+
+.toolbar-btn {
+  margin: 0 10px;
+  flex-shrink: 0;
+}
+
+.logout-btn {
+  margin-left: 10px; /* adjust as needed */
+}
+
+.search-input {
+  border: none;
+  background: none;
+  color: white;
+  outline: none;
+  font-size: 16px;
+}
+
+
+.username{
+  font-size: 12px;
+}
+
+
+
+@media only screen and (max-width: 767px) {
+
+  .toolbar-btn {
+    margin: 0;
+  }
+}

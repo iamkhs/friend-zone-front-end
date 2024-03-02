@@ -1,0 +1,15 @@
+<form #postForm="ngForm" (ngSubmit)="onSubmit()">
+  <h2 class="title">Update</h2>
+    <div class="container">
+      <div class="form-container">
+        <mat-form-field appearance="fill">
+          <textarea [(ngModel)]="postContent" matInput rows="3" name="postContent">
+            {{postContent}}
+        </textarea>
+        </mat-form-field>
+  
+        <button type="submit" mat-raised-button style="color: #1877F2">Update</button>
+      </div>
+    </div>
+  </form>
+  
