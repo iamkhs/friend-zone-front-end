@@ -53,7 +53,7 @@ export class SignupComponent implements OnInit{
             text: 'User signed up successfully!',
           });
 
-          this.router.navigate(['/'])
+          this.router.navigate(['/success'])
         },
         (error) => {
           // Display error message using SweetAlert

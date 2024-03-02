@@ -10,6 +10,7 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './service/auth.guard';
 import { NotificationComponent } from './components/notification/notification.component';
 import { UserFriendsComponent } from './components/user-friends/user-friends.component';
+import { SuccessMessageComponent } from './components/success-message/success-message.component';
 
 const routes: Routes = [
 
@@ -19,7 +20,7 @@ const routes: Routes = [
     pathMatch: 'full',
     canActivate: [AuthGuard],
   },
-
+  
   {
     path: 'search',
     component: PostsComponent,
@@ -53,6 +54,13 @@ const routes: Routes = [
     component: SignupComponent,
     pathMatch: 'full',
   },
+
+  {
+    path:'success',
+    component: SuccessMessageComponent,
+    pathMatch: 'full'
+  },
+
 
   {
     path: 'post-details',
