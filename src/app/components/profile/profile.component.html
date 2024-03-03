@@ -119,7 +119,7 @@
                   <input [readonly]="true" (click)="openDialog()" matInput />
                 </mat-form-field>
               </div>
-              <h2>Your Posts</h2>
+              <h2>{{ currentLoggedUser ? 'Your Posts' : "Posts" }}</h2>
               <div class="posts-container" *ngIf="posts">
                 <mat-card class="post-card" *ngFor="let post of posts">
                   <mat-card-header>
